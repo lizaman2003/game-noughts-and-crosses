@@ -1,0 +1,118 @@
+main{
+    display: flex;
+    width: 100%;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.blockWho{
+    padding: 25px;
+}
+#spanWho{
+    color: rgb(116, 246, 116);
+    font-weight: 600;
+    font-size: 24px;
+}
+.blockArea{
+    display: flex;
+    width: 500px;
+    flex-wrap: wrap;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: aliceblue;
+    border-radius: 24px;
+}
+
+.blockItem{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    padding: 8px;
+    background: rgb(159, 159, 159);
+    width: 140px;
+    border-radius: 24px;
+    height: 140px;
+    margin: 5px;
+    justify-content: center;
+}
+.blockItem:hover{
+    background: rgb(174, 174, 174);
+}
+
+.krest{
+    color: rgb(135, 220, 250);
+    font-size: 38px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.circle{
+    color: rgb(148, 255, 124);
+    font-size: 38px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.winColor{
+    color: rgb(21, 168, 21);
+    background: rgb(240, 219, 97);
+    font-size: 50px;
+    font-weight: 900;
+}
+
+.blockWinner{
+    margin-top: 24px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textWin{
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+#spanWin{
+    font-size: 24px;
+    color: rgb(87, 199, 203);
+}
+.btnNewGame{
+    padding: 12px;
+    background: rgb(55, 196, 55);
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+.btnNewGame:hover{
+    background: rgb(82, 229, 82);
+}
+.stat {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.stat table {
+    border-collapse: collapse;
+    padding: 5px;
+    border-radius: 20px;
+    background: aliceblue;
+}
+
+.stat table, .stat th, .stat td {
+    padding: 5px;
+    text-align: center;
+    width: 400px;
+    height: 80px;
+    border:5px solid rgb(255, 255, 255);
+}
+.statistic{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

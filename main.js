@@ -2,12 +2,6 @@ let step = "";
 let spanWho = document.getElementById("spanWho");
 let winner = "";
 
-let stat = {
-  x: 0,
-  o: 0,
-  d: 0
-};
-
 const who = () => {
   if (step == "circle") {
     step = "krest";
@@ -44,6 +38,11 @@ blockItem.forEach((item) => {
     }
   });
 });
+var stat = {
+    'x': 0,
+    'o': 0,
+    'd': 0
+}
 
 let win = [
   [0, 1, 2],
@@ -68,33 +67,34 @@ let circleWin = () => {
       blockItem[win[i][2]].classList.add("winColor");
       winner = "Нолики";
       endGame(winner);
-      stat.o += 1;
+      console.log(winner);
+      return 1;
     }
   }
 };
 
 let krestWin = () => {
-  for (let k = 0; k < win.length; k++) {
+  for (let i = 0; i < win.length; i++) {
     if (
-      blockItem[win[k][0]].classList.contains("krest") &&
-      blockItem[win[k][1]].classList.contains("krest") &&
-      blockItem[win[k][2]].classList.contains("krest")
+      blockItem[win[i][0]].classList.contains("krest") &&
+      blockItem[win[i][1]].classList.contains("krest") &&
+      blockItem[win[i][2]].classList.contains("krest")
     ) {
-      blockItem[win[k][0]].classList.add("winColor");
-      blockItem[win[k][1]].classList.add("winColor");
-      blockItem[win[k][2]].classList.add("winColor");
+      blockItem[win[i][0]].classList.add("winColor");
+      blockItem[win[i][1]].classList.add("winColor");
+      blockItem[win[i][2]].classList.add("winColor");
       winner = "Крестики";
       endGame(winner);
-      stat.x += 1;
+      console.log(winner);
+      return 1;
     }
   }
 };
 
 let noWin = () => {
-  if (!krestWin() && !circleWin() && counter >= 9) {
+  if (!krestWin() && !circleWin() && (counter >= 9)) {
     winner = "Ничья";
     endGame(winner);
-    stat.d += 1;
   }
 };
 
@@ -106,6 +106,17 @@ let blockArea = document.getElementById("blockArea");
 let endGame = (winner) => {
   blockArea.style.pointerEvents = "none";
   spanWin.innerText = winner;
+  switch (winner) {
+    case "Нолики":
+        stat.o += 1;
+      break;
+    case "Крестики":
+        stat.x += 1;
+      break;
+      case "Ничья":
+        stat.d += 1;
+      break;
+  }
   updateStat();
 };
 btnNewGame.addEventListener("click", () => {

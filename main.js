@@ -38,7 +38,7 @@ blockItem.forEach((item) => {
     }
   });
 });
-var stat = {
+let stat = {
     'x': 0,
     'o': 0,
     'd': 0
@@ -67,8 +67,6 @@ let circleWin = () => {
       blockItem[win[i][2]].classList.add("winColor");
       winner = "Нолики";
       endGame(winner);
-      console.log(winner);
-      return 1;
     }
   }
 };
@@ -85,8 +83,6 @@ let krestWin = () => {
       blockItem[win[i][2]].classList.add("winColor");
       winner = "Крестики";
       endGame(winner);
-      console.log(winner);
-      return 1;
     }
   }
 };
@@ -136,3 +132,6 @@ function updateStat() {
   document.getElementById("sO").innerHTML = stat.o;
   document.getElementById("sD").innerHTML = stat.d;
 }
+btnResetStat.addEventListener("click", () => {
+  window.location.reload();
+});

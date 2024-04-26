@@ -91,6 +91,15 @@ main{
 .btnNewGame:hover{
     background: rgb(82, 229, 82);
 }
+.btnResetStat{
+    padding: 12px;
+    background: rgb(65, 239, 239);
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
 .stat {
     display: flex;
     align-items: center;

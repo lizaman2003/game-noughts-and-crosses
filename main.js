@@ -2,6 +2,12 @@ let step = "";
 let spanWho = document.getElementById("spanWho");
 let winner = "";
 
+let blockWinner = document.getElementById("blockWinner");
+let spanWin = document.getElementById("spanWin");
+let btnNewGame = document.getElementById("btnNewGame");
+let blockArea = document.getElementById("blockArea");
+
+
 const who = () => {
   if (step == "circle") {
     step = "krest";
@@ -26,16 +32,30 @@ blockItem.forEach((item) => {
       item.classList.add(step);
       if (step == "krest") {
         item.innerText = "X";
+        circleWin();
       }
       if (step == "circle") {
         item.innerText = "0";
+        krestWin();
       }
       counter++;
       who();
-      circleWin();
-      krestWin();
       noWin();
     }
+  });
+  btnNewGame.addEventListener("click", () => {
+    winner = "";
+    spanWin.innerText = "";
+    counter = 0;
+    console.log(counter);
+    document.querySelector('.TextWin').style.display = ('none');
+    for (var i = 0; i < blockItem.length; i++) {
+      blockArea.style.pointerEvents = "auto";
+      blockItem[i].innerHTML = "";
+      blockItem[i].classList.remove("winColor");
+      blockItem[i].classList.remove("circle");
+      blockItem[i].classList.remove("krest");
+    };
   });
 });
 let stat = {
@@ -52,7 +72,7 @@ let win = [
   [6, 7, 8],
   [0, 3, 6],
   [1, 4, 7],
-  [2, 5, 8],
+  [2, 5, 8]
 ];
 
 let circleWin = () => {
@@ -72,15 +92,15 @@ let circleWin = () => {
 };
 
 let krestWin = () => {
-  for (let i = 0; i < win.length; i++) {
+  for (let k = 0; k < win.length; k++) {
     if (
-      blockItem[win[i][0]].classList.contains("krest") &&
-      blockItem[win[i][1]].classList.contains("krest") &&
-      blockItem[win[i][2]].classList.contains("krest")
+      blockItem[win[k][0]].classList.contains("krest") &&
+      blockItem[win[k][1]].classList.contains("krest") &&
+      blockItem[win[k][2]].classList.contains("krest")
     ) {
-      blockItem[win[i][0]].classList.add("winColor");
-      blockItem[win[i][1]].classList.add("winColor");
-      blockItem[win[i][2]].classList.add("winColor");
+      blockItem[win[k][0]].classList.add("winColor");
+      blockItem[win[k][1]].classList.add("winColor");
+      blockItem[win[k][2]].classList.add("winColor");
       winner = "Крестики";
       endGame(winner);
     }
@@ -94,12 +114,8 @@ let noWin = () => {
   }
 };
 
-let blockWinner = document.getElementById("blockWinner");
-let spanWin = document.getElementById("spanWin");
-let btnNewGame = document.getElementById("btnNewGame");
-let blockArea = document.getElementById("blockArea");
-
 let endGame = (winner) => {
+  document.querySelector('.TextWin').style.display = ('block');
   blockArea.style.pointerEvents = "none";
   spanWin.innerText = winner;
   switch (winner) {
@@ -115,18 +131,7 @@ let endGame = (winner) => {
   }
   updateStat();
 };
-btnNewGame.addEventListener("click", () => {
-  winner = "";
-  spanWin.innerText = "";
-  counter = 0;
-  for (var i = 0; i < blockItem.length; i++) {
-    blockArea.style.pointerEvents = "auto";
-    blockItem[i].innerHTML = "";
-    blockItem[i].classList.remove("winColor");
-    blockItem[i].classList.remove("circle");
-    blockItem[i].classList.remove("krest");
-  }
-});
+
 function updateStat() {
   document.getElementById("sX").innerHTML = stat.x;
   document.getElementById("sO").innerHTML = stat.o;
